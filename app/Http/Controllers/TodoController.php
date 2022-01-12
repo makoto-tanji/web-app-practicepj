@@ -15,6 +15,7 @@ class TodoController extends Controller
         $items = Todo::all();
         return view('index', ['items' => $items]);
     }
+
     public function create(Request $request)
     {
         $this->validate($request, Todo::$rules);
@@ -22,6 +23,7 @@ class TodoController extends Controller
         Todo::create($form);
         return redirect('/');
     }
+
     public function update(Request $request)
     {
         $this->validate($request, Todo::$rules);
@@ -30,10 +32,10 @@ class TodoController extends Controller
         Todo::where('id', $request->id)->update($form);
         return redirect('/');
     }
+
     public function delete(Request $request)
     {
         Todo::find($request->id)->delete();
         return redirect('/');
-        //return $request;
     }
 }

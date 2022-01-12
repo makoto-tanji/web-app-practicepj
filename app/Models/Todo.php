@@ -9,7 +9,12 @@ class Todo extends Model
 {
     use HasFactory;
     //以下追加
-    protected $fillable = ['id', 'content', 'created_at', 'updated_at'];
+    protected $fillable = [
+        'id',
+        'content',
+        'created_at',
+        'updated_at'
+    ];
 
     public static $rules = array(
         'content' => 'required|max:20',

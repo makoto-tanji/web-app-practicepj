@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 //以下追加
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\Todo2Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,15 @@ use App\Http\Controllers\TodoController;
 |
 */
 
-Route::get('/', [TodoController::class, 'index']);
-Route::prefix('todo')->group(function () {
-  Route::post('create', [TodoController::class,'create']);
-  Route::post('update', [TodoController::class,'update']);
-  Route::post('delete', [TodoController::class,'delete']);
-  Route::post('delete', [TodoController::class,'delete']);
-});
+// Route::get('/', [TodoController::class, 'index']);
+// Route::prefix('todo')->group(function () {
+//   Route::post('create', [TodoController::class,'create']);
+//   Route::post('update', [TodoController::class,'update']);
+//   Route::post('delete', [TodoController::class,'delete']);
+//   Route::post('delete', [TodoController::class,'delete']);
+// });
+
+//リソースルート
+Route::resource('/', Todo2Controller::class)->only([
+  'index', 'store', 'update', 'destroy'
+]);
